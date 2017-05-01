@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import './index.css';
+import ItemSearch from './containers/item-search'
+import { Provider } from 'react-redux';
+import RecipeStore from './store';
 
 ReactDOM.render(
-  <App />,
+  <Provider store={RecipeStore}>
+    <ItemSearch />
+  </Provider >,
   document.getElementById('root')
 );
