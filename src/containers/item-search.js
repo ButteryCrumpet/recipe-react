@@ -8,8 +8,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchSearch: () => {
-      dispatch(fetchSearch())
+    fetchSearch: (value) => {
+      dispatch(fetchSearch(value))
     }
   }
 }

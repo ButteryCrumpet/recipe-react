@@ -1,17 +1,26 @@
 import React from 'react';
 import ListItem from './list-item';
+import debounce from 'lodash.debounce';
 
 class ItemSearch extends React.Component {
 
+  constructor(){
+    super();
+    this.handleOnChange = debounce(this.handleOnChange.bind(this), 500);
+  }
+
   handleOnChange(e){
-    const search = this.refs.search.value;
-    this.props.fetchSearch(search)
+    const searchTerm = this.search.value;
+    console.log(searchTerm);
+    this.props.fetchSearch(this.search.value);
   }
 
   render() {
     return (
       <div>
-        <input type='text' ref='search' onChange={this.handleOnChange.bind(this)}></input>
+        <form>
+          <input type='text' ref={(input) => {this.search = input}} onChange={this.handleOnChange}></input>
+        </form>
         <div>
           {this.props.data.map((item, i) => {
             return <ListItem

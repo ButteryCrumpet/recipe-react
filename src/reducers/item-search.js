@@ -17,10 +17,11 @@ function itemSearchReducer(state=initialState, action) {
         sendingSearchRequest: false,
         searchResults: action.payload.data
       }
-    case 'FETCH_USER_REJECTED':
+    case 'FETCH_SEARCH_REJECTED':
       return {
         ...state,
         sendingSearchRequest: false,
+        searchResults: [],
         error: 'some gosh darned error'
       }
     default:
