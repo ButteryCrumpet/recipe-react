@@ -1,6 +1,6 @@
 import React from 'react';
-import ListItem from './list-item';
 import debounce from 'lodash.debounce';
+import { Link } from 'react-router-dom';
 
 class ItemSearch extends React.Component {
 
@@ -26,12 +26,22 @@ class ItemSearch extends React.Component {
             return <ListItem
               key={i}
               item={item}
+              onClick={() => this.props.selectItem(item.name)}
               />
             })}
         </div>
       </div>
     )
   }
+}
+
+const ListItem = (props) => {
+  return (
+    <Link to={`${props.item.name}`} onClick={props.onClick}>
+      <img src={props.item.image} alt='Not Available' />
+      <h4>{props.item.name.replace(/_/g, " ")}</h4>
+    </Link>
+  )
 }
 
 export default ItemSearch;

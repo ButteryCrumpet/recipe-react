@@ -1,15 +1,18 @@
 import { connect } from 'react-redux';
 import itemSearch from '../components/item-search';
-import fetchSearch from '../actions/item-search';
+import { fetchSearch, selectItem } from '../actions/item-search';
 
 const mapStateToProps = (state) => ({
-  data: state.searchResults
+  data: state.search.searchResults
 })
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchSearch: (value) => {
       dispatch(fetchSearch(value))
+    },
+    selectItem: (item) => {
+      dispatch(selectItem(item))
     }
   }
 }

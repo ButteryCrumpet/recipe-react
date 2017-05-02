@@ -1,14 +1,16 @@
 const initialState = {
   sendingSearchRequest: false,
-  sendingRecipeRequest: false,
   error: '',
   searchResults: [],
-  recipe: {}
+  selectedItem: ''
 }
 
 function itemSearchReducer(state=initialState, action) {
 
   switch (action.type) {
+    case 'SELECT_ITEM':
+      console.log(action.payload);
+      return {...state, selectItem: action.payload}
     case 'FETCH_SEARCH_PENDING':
       return {...state, sendingSearchRequest: true}
     case 'FETCH_SEARCH_FULFILLED':
