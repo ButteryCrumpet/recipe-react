@@ -10,7 +10,9 @@ ReactDOM.render(
   <Provider store={RecipeStore}>
       <BrowserRouter basename="/">
         <div>
-          <Route path='/:recipe' component={RecipeView} />
+          <div id='recipe-wrapper'>
+            <Route path='/:recipe' component={RecipeView} />
+          </div>
           <Route path='/' component={ItemSearch} />
         </div>
       </BrowserRouter>

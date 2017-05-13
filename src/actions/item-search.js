@@ -5,13 +5,13 @@ export function fetchSearch(value){
   const url = `https://recipe-endpoints.herokuapp.com/items/search/${value}`;
   return {
     type: 'FETCH_SEARCH',
-    payload: axios.get(url)
+    payload: axios.get(url),
   }
 }
 
-export function selectItem(name){
+export function selectItem(item){
   return {
     type: 'SELECT_ITEM',
-    payload: name
+    payload: item
   }
 }

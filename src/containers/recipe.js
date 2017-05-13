@@ -4,8 +4,9 @@ import fetchRecipe from '../actions/recipe';
 
 const mapStateToProps = (state) => {
   return {
-    data: state.recipe.recipe,
+    data: state.recipe.activeRecipe,
     loading: state.recipe.sendingRecipeRequest,
+    foundRecipe: state.recipe.foundRecipe
   }
 }
 

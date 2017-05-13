@@ -17,19 +17,22 @@ class ItemSearch extends React.Component {
 
   render() {
     return (
-      <div>
-        <form>
+      <div id='search'>
+        <form id='search-bar'>
           <input type='text' ref={(input) => {this.search = input}} onChange={this.handleOnChange}></input>
         </form>
-        <div>
-          {this.props.data.map((item, i) => {
-            return <ListItem
-              key={i}
-              item={item}
-              onClick={() => this.props.selectItem(item.name)}
-              />
+        {this.props.loading && <h3>Loading..</h3>}
+        {this.props.loading === false &&
+          <ul id='search-list'>
+            {this.props.data.map((item, i) => {
+              return <ListItem
+                key={i}
+                item={item}
+                onClick={() => this.props.selectItem(item)}
+                />
             })}
-        </div>
+          </ul>
+        }
       </div>
     )
   }
@@ -37,10 +40,14 @@ class ItemSearch extends React.Component {
 
 const ListItem = (props) => {
   return (
-    <Link to={`${props.item.name}`} onClick={props.onClick}>
-      <img src={props.item.image} alt='Not Available' />
-      <h4>{props.item.name.replace(/_/g, " ")}</h4>
-    </Link>
+    <li>
+      <Link to={`${props.item.name}`} >
+        <div className='flexWrapper'>
+          <img src={props.item.image} alt='Not Available' />
+          <h4>{props.item.name.replace(/_/g, " ")}</h4>
+        </div>
+      </Link>
+    </li>
   )
 }
 

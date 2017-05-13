@@ -3,7 +3,8 @@ import itemSearch from '../components/item-search';
 import { fetchSearch, selectItem } from '../actions/item-search';
 
 const mapStateToProps = (state) => ({
-  data: state.search.searchResults
+  data: state.search.searchResults,
+  loading: state.search.sendingSearchRequest
 })
 
 const mapDispatchToProps = (dispatch) => {
