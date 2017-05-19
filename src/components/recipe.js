@@ -18,7 +18,7 @@ class RecipeView extends React.Component {
     return (
       <li key={ingredient.item.name}>
         <div className='flexWrapper'>
-          <h4>{ingredient.amount}x {ingredient.item.name}</h4>
+          <h4>{ingredient.amount}x {ingredient.item.name.replace(/_/g, " ")}</h4>
           <img src={ingredient.item.image} alt='Not Available'/>
         </div>
       </li>
@@ -29,7 +29,7 @@ class RecipeView extends React.Component {
     if (this.props.loading){
       return (
         <div className='recipe' id='recipe-loading'>
-          <h3>Loading..</h3>
+          <div className='spinner'></div>
         </div>
       )
     } else if (this.props.foundRecipe === false) {

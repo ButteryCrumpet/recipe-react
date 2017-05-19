@@ -21,18 +21,20 @@ class ItemSearch extends React.Component {
         <form id='search-bar'>
           <input type='text' ref={(input) => {this.search = input}} onChange={this.handleOnChange}></input>
         </form>
-        {this.props.loading && <h3>Loading..</h3>}
-        {this.props.loading === false &&
-          <ul id='search-list'>
-            {this.props.data.map((item, i) => {
-              return <ListItem
-                key={i}
-                item={item}
-                onClick={() => this.props.selectItem(item)}
-                />
-            })}
-          </ul>
-        }
+        <div className='flexWrapper'>
+          {this.props.loading && <div className='spinner'></div>}
+          {this.props.loading === false &&
+            <ul id='search-list'>
+              {this.props.data.map((item, i) => {
+                return <ListItem
+                  key={i}
+                  item={item}
+                  onClick={() => this.props.selectItem(item)}
+                  />
+              })}
+            </ul>
+          }
+        </div>
       </div>
     )
   }
